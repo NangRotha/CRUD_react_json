@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     const [data, setdata] = useState([]);
@@ -18,9 +19,10 @@ const HomePage = () => {
     }, []);
   return (
     <div className='container'>
-        <h1>Wellcome to React JS + Json server</h1>
-        <p>Hello</p>
-        <table className='table table-striped'>
+        <h1 className='text-center'>Wellcome to React JS + Json server</h1>
+        <p className='text-center'>Hello</p>
+        <Link to='/add' className="btn btn-success mb-3">Add Student</Link> 
+        <table className='table table-striped text-center'>
             <thead>
                 <tr>
                     <th scope='col'>#</th>
