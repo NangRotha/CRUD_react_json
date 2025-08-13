@@ -1,0 +1,45 @@
+{
+    "students":[
+        {
+            "id": 1,
+            "name": "Alice",
+            "age": 20,
+            "major": "Computer Science"
+        },
+        {
+            "id": 2,
+            "name": "Bob",
+            "age": 22,
+            "major": "Mathematics"
+        },
+        {
+            "id": 3,
+            "name": "Charlie",
+            "age": 21,
+            "major": "Physics"
+        },
+        {
+            "id": 4,
+            "name": "kaka",
+            "age": 21,
+            "major": "Chemistry"
+        }
+    ],
+    "course":[
+        {
+            "id": 1,
+            "title": "Introduction to Programming",
+            "credits": 3
+        },
+        {
+            "id": 2,
+            "title": "Data Structures",
+            "credits": 4
+        },
+        {
+            "id": 3,
+            "title": "Algorithms",
+            "credits": 4
+        }
+    ]
+}
