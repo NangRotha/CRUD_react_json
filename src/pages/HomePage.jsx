@@ -17,6 +17,22 @@ const HomePage = () => {
     React.useEffect(() => {
         fetchData();
     }, []);
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:3000/students/${id}`, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                setdata(data.filter(item => item.id !== id));
+                // console.log('Delete successful'); // Debug log
+                alert('Item deleted successfully');
+            } else {
+                console.error('Error deleting item:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error deleting item:', error);
+        }
+    };
   return (
     <div className='container'>
         <h1 className='text-center'>Wellcome to React JS + Json server</h1>
@@ -26,6 +42,7 @@ const HomePage = () => {
             <thead>
                 <tr>
                     <th scope='col'>#</th>
+                    <th scope='col'>id</th>
                     <th scope='col'>Name</th>
                     <th scope='col'>Age</th>
                     <th scope='col'>Major</th>
@@ -36,12 +53,13 @@ const HomePage = () => {
                 {data.map((item, index) => (
                     <tr key={item.id}>
                         <th scope='row'>{index + 1}</th>
+                        <td>{item.id}</td>
                         <td>{item.name}</td>
                         <td>{item.age}</td>
                         <td>{item.major}</td>
                         <td>
-                            <button className='btn btn-primary'>Edit</button>
-                            <button className='btn btn-danger'>Delete</button>
+                            <Link to={`/update/${item.id}`} className='btn btn-primary me-3'>Edit</Link>
+                            <button onClick={() => handleDelete(item.id)} className='btn btn-danger'>Delete</button>
                         </td>
                     </tr>
                 ))}

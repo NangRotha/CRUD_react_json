@@ -1,11 +1,25 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
-const AddNewStudent = () => {
+const UpdateStudentPage = () => {
     const [data, setdata] = useState({});
+    const { id } = useParams();
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`http://localhost:3000/students/${id}`);
+            if (response.ok) {
+                const result = await response.json();
+                setdata(result);
+            } else {
+                console.error('Error fetching student data:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error fetching student data:', error);
+        }
+    }
     const navigation = useNavigate();
     const handleInput = (e) => {
-        setdata({
+        setdata({ 
             ...data,
             [e.target.name]: e.target.value
         });
@@ -14,8 +28,8 @@ const AddNewStudent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const request = await fetch('http://localhost:3000/students', {
-                method: 'POST',
+            const request = await fetch(`http://localhost:3000/students/${id}`, { // Use backticks here
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -23,22 +37,27 @@ const AddNewStudent = () => {
             });
             if (request.ok) {
                 navigation('/');
-                alert('Student added successfully');
+                alert('Update successfully');
             } else {
-                alert('Failed to add student');
+                alert('Failed to update student');
             }
         } catch (error) {
-            console.error('Error adding student:', error);
+            console.error('Error updating student:', error);
         }
     }
+
+    useEffect(() => {
+        fetchData();
+    }, [id]);
     
     return (
         <div className='container'>
-            <h1 className='text-center'>Add New Student</h1>  
+            <h1 className='text-center'>Update Student</h1>  
             <form onSubmit={handleSubmit}>
                 <div className='mb-3'>
                     <label htmlFor='name' className='form-label'>Name</label>
-                    <input 
+                    <input
+                        defaultValue={data.name} 
                         type='text' 
                         onChange={handleInput} 
                         className='form-control' 
@@ -50,6 +69,7 @@ const AddNewStudent = () => {
                 <div className='mb-3'>
                     <label htmlFor='age' className='form-label'>Age</label>
                     <input 
+                        defaultValue={data.age}
                         type='number' 
                         onChange={handleInput} 
                         className='form-control' 
@@ -61,15 +81,16 @@ const AddNewStudent = () => {
                 <div className='mb-3'>
                     <label htmlFor='major' className='form-label'>Major</label>
                     <input 
+                        defaultValue={data.major}
                         type='text' 
                         onChange={handleInput} 
                         className='form-control' 
                         id='major' 
-                        name='major'
+                        name='major' 
                         placeholder='Enter student major' 
                     />
                 </div>
-                <button type='submit' className='btn btn-primary'>Add Student</button>
+                <button type='submit' className='btn btn-primary'>Update Student</button>
                 <button type='button' className='btn btn-danger ms-2'>
                     <Link to='/' className='text-white text-decoration-none'>Back to Home</Link>
                 </button>
@@ -87,4 +108,4 @@ const AddNewStudent = () => {
     )
 }
 
-export default AddNewStudent
+export default UpdateStudentPage

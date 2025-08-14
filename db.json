@@ -1,55 +1,37 @@
 {
   "students": [
     {
-      "id": 1,
-      "name": "Alice",
-      "age": 20,
-      "major": "Computer Science"
+      "id": "4f81",
+      "name": "Rotha",
+      "age": "50",
+      "major": "IT"
     },
     {
-      "id": 2,
-      "name": "Bob",
-      "age": 22,
-      "major": "Mathematics"
+      "id": "7a1c",
+      "name": "Griffith Mckinney",
+      "age": "98",
+      "major": "At ipsam consequatur"
     },
     {
-      "id": 3,
-      "name": "Charlie",
-      "age": 21,
-      "major": "Physics"
-    },
-    {
-      "id": 4,
+      "id": "e6fb",
       "name": "kaka",
-      "age": 21,
-      "major": "Chemistry"
-    },
-    {
-      "id": "40d5",
-      "name": "Danielle Reilly",
-      "age": "45",
-      "major": "Eum ut ex recusandae"
-    },
-    {
-      "id": "1276",
-      "name": "Paloma Nieves",
-      "age": "97",
-      "major": "Sequi explicabo Ess"
+      "age": "94",
+      "major": "Veritatis fugiat omn"
     }
   ],
   "course": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Introduction to Programming",
       "credits": 3
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Data Structures",
       "credits": 4
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Algorithms",
       "credits": 4
     }
